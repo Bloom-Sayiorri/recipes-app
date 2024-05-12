@@ -28,6 +28,13 @@ module Api
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # Adding back cookies and session middleware
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    # Use SameSite=Strict for all cookies to help protect against CSRF
+    config.action_dispatch.cookies_same_site_protection = :strict
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
