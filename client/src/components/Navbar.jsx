@@ -3,7 +3,7 @@ import Search from './Search'
 
 const Navbar = () => {
   return (
-    <header className='flex justify-between items-center p-3'>
+    <header className='bg-sky-200 flex justify-between items-center p-3'>
         <div className=''>
             <h1 className=''>Recipes App</h1>
         </div>
