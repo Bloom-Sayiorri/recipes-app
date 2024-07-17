@@ -1,10 +1,12 @@
 import React from 'react'
 import Search from './Search'
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   return (
     <header className='bg-sky-200 flex justify-between items-center p-3'>
         <div className=''>
+            {/* <img src='' alt='Logo'/> */}
             <h1 className=''>Recipes App</h1>
         </div>
         <Search />
@@ -17,7 +19,9 @@ const Navbar = () => {
             </ul>
             <div className=''>
                 <button className=''>Signup</button>
-                <button className=''>Profile</button>
+                <button className=''>
+                    <CgProfile />
+                </button>
             </div>
         </nav>
     </header>
