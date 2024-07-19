@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_record_not_destroyed_response
@@ -69,4 +69,4 @@ class UsersController < ApplicationController
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end
 
-en
+end
