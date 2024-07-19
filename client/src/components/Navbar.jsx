@@ -1,6 +1,7 @@
 import React from 'react'
 import Search from './Search'
 import { CgProfile } from "react-icons/cg";
+import { FaUserGear } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
@@ -21,6 +22,7 @@ const Navbar = () => {
                 <button className=''>Signup</button>
                 <button className=''>
                     <CgProfile />
+                    <FaUserGear />
                 </button>
             </div>
         </nav>
