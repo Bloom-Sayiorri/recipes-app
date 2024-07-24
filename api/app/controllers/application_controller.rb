@@ -2,8 +2,8 @@ class ApplicationController < ActionController::API
   # include ActionController::Cookies
   before_action :authorized
 
-  def encoded_token(payload)
-    JWT.encode(payload, 'my_s3cr3t')
+  def encode_token(payload)
+    JWT.encode(payload, 'my_s3cr3t') 
   end
 
   def auth_header
