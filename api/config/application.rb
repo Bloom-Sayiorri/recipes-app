@@ -29,11 +29,11 @@ module Api
     config.autoload_lib(ignore: %w(assets tasks))
 
     # Adding back cookies and session middleware
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
-    config.action_dispatch.cookies_same_site_protection = :strict
+    # config.action_dispatch.cookies_same_site_protection = :strict
 
     # Configuration for the application, engines, and railties goes here.
     #
