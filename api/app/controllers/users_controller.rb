@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_beofre_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
@@ -10,19 +10,20 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
-    render json: @users, status: :ok
+    users = User.all
+    render json: users, status: :ok
   end
 
   def show
-    @user = find_user
-    render json: @user, status: :ok
+    user = find_user
+    render json: user, status: :ok
   end
 
   def create
-    @user = User.create!(user_params)
+    user = User.create!(user_params)
     @token = encode_token(user_id: @user.id)
-    render json: { user: @user, jwt: @token }, status: :created
+    render json: { user: user, jwt: @token }, status: :created
+    render json: { user: UserSerializer.new(user), token: @token }, status: :created
   end
 
   #fetch
@@ -43,14 +44,14 @@ class UsersController < ApplicationController
   # )}
 
   def update
-    @user = find_user
-    @user.update!(user_params)
-    render json: @user, status: :accepted
+    user = find_user
+    user.update!(user_params)
+    render json: user, status: :accepted
   end
 
   def destroy
-    @user = find_user
-    @user.destroy!
+    user = find_user
+    user.destroy!
     head :no_content
   end
 
