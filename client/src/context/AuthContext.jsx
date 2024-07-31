@@ -1,26 +1,58 @@
-// import { createContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import  { useNavigate } from 'react-routet-dom';
 
-// export const AuthContext = createContext();
+export const AuthContext = createContext();
 
-// export default function AuthProvider({children}) {
+export default function AuthProvider({children}) {
 
-//     const login = () => {
-//         console.log('context from login');
-//     };
-//     const signup = () => {
-//         console.log('context from signup');
-//     };
-//     const logout = () => {
-//         console.log('context from logout');
-//     };
+    const navigate = useNavigate();
 
-//     const contextData= { login, signup, logout };
+    const [ currentUser, setCurrentUser ] = useState('');
+    
+    const login = () => {
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: 'Bearer <token>',
+            },
+            body: JSON.stringify({
+                // username: username,
+                // password: password,
+            })
+        })
+        .then(res => res.json())
+        // .then((data) => {
+        //     localStorage.setItem('jwt', data.jwt);
+        // })
+        .then(res => {
+            if(res.ok) {
+                console.log(res)
+            }
+        })
+        console.log('context from login');
+    };
+    const signup = () => {
+        console.log('context from signup');
+    };
+    const logout = () => {
+        fetch('/user', {
+            method: 'DELETE',
+        })
+        .then(localStorage.removeIem("jwt"))
+    };
 
-//     return (
-//         <>
-//             <AuthContext.Provider value={contextData}>
-//                 {children}
-//             </AuthContext.Provider>
-//         </>
-//     )
-// }
+    useEffect(() => {
+        console.log("This is my useEffect function.")
+    }, [])
+
+    const contextData= { login, signup, logout };
+
+    return (
+        <>
+            <AuthContext.Provider value={contextData}>
+                {children}
+            </AuthContext.Provider>
+        </>
+    )
+}
