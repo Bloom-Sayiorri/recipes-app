@@ -8,32 +8,68 @@ class RecipesController < ApplicationController
   # Handle logged in user making crud operations.
 
   def index
-    # user = User.find_by(login_params [:user_id])
-    recipes = Recipe.all
-    render json: recipes
+    user = find_user
+    if user
+      recipes = Recipe.all
+      render json: recipes, status: :ok
+    else
+      render json: { erros: ["You must be logged in."] }, status: :unauthorized
+    end
   end
 
   def show
-    recipe = find_recipe
-    render json: recipe
+    user = find_user
+    if user
+      recipe = find_recipe
+      render json: recipe, status: :ok
+    else
+      render json: { errors: ["You must be logged in."] }, status: :unauthorized
+    end
   end
 
   def create
-    recipe = Recipe.create!(recipe_params)
-    render json: recipe, status: :created
+    user = find_user
+    if user
+      recipe = user.recipes.create(recipe_params)
+      if recipe.valid?
+        render json: recipe, status: :created
+      else
+        render json: { errors: recipe.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { errors: ["You must be logged in."] }, status: :unauthorized
+    end
   end
 
 
   def update
-    recipe = find_recipe
-    recipe.update!(recipe_params)
-    render json: recipe, status: :created
+    user = find_user
+    if user
+      recipe = find_recipe
+      recipe.update!(recipe_params)
+      render json: recipe, status: :created
+    else
+      render json: { errors: { message: "You must be loggged in to edit recipes." } }, status: :unauthorized
+    end
+  end
+
+  def destroy
+    user = find_user
+    if user
+      recipe = find_recipe
+      recipe.destroy!
+      head :no_content
+    end
   end
 
   private
 
   def find_recipe
-    Recipe.find(params[:id])
+    Recipe.find_by(id: params[:id])
+  end
+
+  def find_user
+    User.find_by(id: login_params[:user_id])
   end
 
   def recipe_params
