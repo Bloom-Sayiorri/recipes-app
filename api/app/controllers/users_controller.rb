@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:destroy, :show, :index, :create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_record_not_destroyed_response
 
-  def profile
-    render json: { user: current_user }, status: :accepted
-  end
+  # def profile
+  #   render json: { user: current_user }, serializer: UserSerializer, status: :accepted
+  # end
 
   def index
     users = User.all
@@ -21,9 +21,8 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
-    @token = encode_token(user_id: @user.id)
-    render json: { user: user, jwt: @token }, status: :created
-    render json: { user: UserSerializer.new(user), token: @token }, status: :created
+    token = encode_token(user_id: user.id)
+    render json: { user: user, token: token }, status: :created
   end
 
   #fetch
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :img_url, :admin)
+    params.permit(:username, :email, :password, :bio, :img_url, :admin)
   end
 
   # def user_params

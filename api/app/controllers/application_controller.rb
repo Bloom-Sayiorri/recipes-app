@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
   before_action :authorized
 
   def encode_token(payload)
-    JWT.encode(payload, 'my_s3cr3t') 
+    JWT.encode(payload, 'my_s3cr3t')
   end
 
   def auth_header
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_token
-    if auth_headers
+    if auth_header
       token = auth_header.split(' ')[1]
       # header: { 'Authorization': 'Bearer <token>' }
       begin

@@ -98,3 +98,1699 @@ Migrating to CreateProfiles (20240724163234)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-08-04 20:09:11 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.2ms | Allocations: 374)
+Completed 200 OK in 34ms (Views: 13.5ms | ActiveRecord: 0.0ms | Allocations: 5695)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:09:19 +0300
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 184)
+
+
+  
+NameError (undefined local variable or method `auth_headers' for an instance of UsersController):
+  
+app/controllers/application_controller.rb:15:in `decoded_token'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:36:in `logged_in?'
+app/controllers/application_controller.rb:40:in `authorized'
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-08-04 20:09:20 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:09:53 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 911)
+
+
+Started GET "/user/1" for 127.0.0.1 at 2024-08-04 20:10:09 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/1"):
+  
+Started GET "/user/1s" for 127.0.0.1 at 2024-08-04 20:10:15 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/1s"):
+  
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 20:10:25 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 169)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:35:24 +0300
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 545ms (ActiveRecord: 0.0ms | Allocations: 9018)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:65:in `user_params'
+app/controllers/users_controller.rb:23:in `create'
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 20:35:39 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.33ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 38ms (Views: 34.1ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:35:44 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 169)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:39:40 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f7351ae7ee8>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (4.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 422 Unprocessable Entity in 187ms (Views: 1.0ms | ActiveRecord: 33.1ms | Allocations: 19600)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:39:53 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "email"=>"example@email.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (17.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 422 Unprocessable Entity in 77ms (Views: 0.8ms | ActiveRecord: 17.5ms | Allocations: 3762)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:40:26 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "email"=>"example@email.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 422 Unprocessable Entity in 20ms (Views: 1.3ms | ActiveRecord: 10.6ms | Allocations: 8418)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:40:38 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73532c1910>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 15ms (Views: 1.1ms | ActiveRecord: 4.6ms | Allocations: 4486)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:40:55 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user1"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", nil], ["created_at", "2024-08-04 17:40:55.419102"], ["updated_at", "2024-08-04 17:40:55.419102"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 9.1ms | Allocations: 7282)
+
+
+  
+NoMethodError (undefined method `id' for nil):
+  
+app/controllers/users_controller.rb:24:in `create'
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:42:02 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]", "email"=>"example@email.com"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 42ms (Views: 31.4ms | ActiveRecord: 2.2ms | Allocations: 4270)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:42:09 +0300
+Processing by UsersController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 176)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:43:23 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "username": "user1",
+    "password": "123456",
+}
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 122)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/users_controller.rb:65:in `user_params'
+app/controllers/users_controller.rb:23:in `create'
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:44:16 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "user"=>{"username"=>"user1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 422 Unprocessable Entity in 29ms (Views: 2.2ms | ActiveRecord: 6.8ms | Allocations: 9601)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:44:26 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518fe758>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 16ms (Views: 2.1ms | ActiveRecord: 1.7ms | Allocations: 5714)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:44:34 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 21ms (Views: 1.7ms | ActiveRecord: 4.4ms | Allocations: 7700)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 20:46:54 +0300
+Processing by AuthController#login as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+  
+AbstractController::ActionNotFound (The create action could not be found for the :authorized
+callback on AuthController, but it is listed in the controller's
+:only option.
+
+Raising for missing callback actions is a new default in Rails 7.1, if you'd
+like to turn this off you can delete the option from the environment configurations
+or set `config.action_controller.raise_on_missing_callback_actions` to `false`.
+):
+  
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:62:in `match?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:432:in `block in inverted_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `all?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 20:47:57 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+Completed 400 Bad Request in 11ms (ActiveRecord: 0.0ms | Allocations: 2213)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/auth_controller.rb:17:in `login_params'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 20:48:26 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password_digest, :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73517823c0>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameters: :password_digest, :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73517823c0>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 7.8ms | Allocations: 7522)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 20:48:56 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password_digest"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351753200>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351753200>, params: {"username"=>"user1", "password_digest"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password_digest"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.9ms | Allocations: 7370)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:49:09 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 351)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:49:14 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 169)
+
+
+Started GET "/" for 127.0.0.1 at 2024-08-04 20:49:20 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-3.3.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.4ms | Allocations: 264)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 858)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 20:49:26 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 169)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:52:54 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518eeba0>, params: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.51ms)
+Completed 422 Unprocessable Entity in 27ms (Views: 6.4ms | ActiveRecord: 5.0ms | Allocations: 8467)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:53:54 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}}
+[31mUnpermitted parameters: :password_digest, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f735185d178>, params: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 422 Unprocessable Entity in 33ms (Views: 4.7ms | ActiveRecord: 10.9ms | Allocations: 8475)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 20:55:09 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}}
+[31mUnpermitted parameters: :password_digest, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518cc780>, params: {"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user2", "password_digest"=>"[FILTERED]", "email"=>"example2@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 422 Unprocessable Entity in 21ms (Views: 2.1ms | ActiveRecord: 3.5ms | Allocations: 4494)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 21:17:00 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "email"=>"example2@email.com", "user"=>{"username"=>"user2", "email"=>"example2@email.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f7351a8c098>, params: {"username"=>"user2", "password"=>"[FILTERED]", "email"=>"example2@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user2", "email"=>"example2@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (28.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.56ms)
+Completed 422 Unprocessable Entity in 478ms (Views: 6.3ms | ActiveRecord: 45.4ms | Allocations: 7382)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 21:19:19 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 177)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:19:29 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user2", "password_digest"=>"[FILTERED]", "auth"=>{"username"=>"user2", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password_digest, :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73518a6b98>, params: {"username"=>"user2", "password_digest"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user2", "password_digest"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 24ms (Views: 12.1ms | ActiveRecord: 0.7ms | Allocations: 919)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:19:37 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351921690>, params: {"username"=>"user2", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 667)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 21:19:49 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "email"=>"example2@email.com", "user"=>{"username"=>"user2", "email"=>"example2@email.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518cd0e0>, params: {"username"=>"user2", "password"=>"[FILTERED]", "email"=>"example2@email.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user2", "email"=>"example2@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 422 Unprocessable Entity in 494ms (Views: 2.1ms | ActiveRecord: 2.5ms | Allocations: 3294)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:20:02 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d017d8>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d017d8>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms | Allocations: 733)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:20:56 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351822640>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351822640>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 12.6ms | Allocations: 7370)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:21:04 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73518078b8>, params: {"username"=>"user2", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 8ms (Views: 5.1ms | ActiveRecord: 0.1ms | Allocations: 816)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2024-08-04 21:22:50 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 247)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:23:40 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 422)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:23:47 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 250)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:24:19 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351ae8d48>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351ae8d48>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 17.1ms | Allocations: 7371)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:25:18 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351a8ac98>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351a8ac98>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms | Allocations: 711)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 21:25:28 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user2", "password"=>"[FILTERED]", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73533f3220>, params: {"username"=>"user2", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user2", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 4ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 772)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2024-08-04 21:25:48 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 249)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2024-08-04 21:25:53 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"2", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 21:26:39 +0300
+Processing by UsersController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 21:26:43 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2024-08-04 21:47:59 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"2", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.16ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 22ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 355)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 21:48:13 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 21:48:48 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.97ms)
+Completed 200 OK in 135ms (Views: 127.6ms | ActiveRecord: 19.3ms | Allocations: 6586)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 21:49:06 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:61:in `find_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.27ms)
+Completed 200 OK in 25ms (Views: 2.7ms | ActiveRecord: 0.9ms | Allocations: 876)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:09:43 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+Completed 400 Bad Request in 30ms (ActiveRecord: 0.0ms | Allocations: 2206)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/auth_controller.rb:17:in `login_params'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:10:57 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.33ms)
+Completed 500 Internal Server Error in 30ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 2507)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/auth_controller.rb:5:in `[]'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:12:55 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 500 Internal Server Error in 12ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 2497)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/auth_controller.rb:5:in `[]'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:13:20 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351887e50>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (19.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351887e50>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 31.3ms | Allocations: 6824)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:13:54 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f735179a650>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f735179a650>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 14.2ms | Allocations: 7370)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:6:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:15:05 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+Completed 400 Bad Request in 9ms (ActiveRecord: 0.0ms | Allocations: 2212)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/auth_controller.rb:20:in `user_login_params'
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:15:18 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351ca7080>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351ca7080>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 26.1ms | Allocations: 7370)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:7:in `create'
+Started DELETE "/users/1" for 127.0.0.1 at 2024-08-04 22:15:49 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 352)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:16:02 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351791af0>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351791af0>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 711)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/auth_controller.rb:7:in `create'
+Started DELETE "/users/1" for 127.0.0.1 at 2024-08-04 22:21:21 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:61:in `find_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:54:in `destroy'
+  [1m[36mUser Destroy (3.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `destroy'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:54:in `destroy'
+Completed 204 No Content in 32ms (ActiveRecord: 14.8ms | Allocations: 5306)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:21:53 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73517bb558>, params: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 422 Unprocessable Entity in 373ms (Views: 1.4ms | ActiveRecord: 2.2ms | Allocations: 3794)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:26:22 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.1ms | ActiveRecord: 9.5ms | Allocations: 355)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:28:41 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f7351abf830>, params: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user1"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", nil], ["created_at", "2024-08-04 19:28:42.066181"], ["updated_at", "2024-08-04 19:28:42.066181"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.8ms)
+Completed 500 Internal Server Error in 445ms (Views: 4.0ms | ActiveRecord: 21.9ms | Allocations: 7652)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/users_controller.rb:26:in `create'
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:29:14 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518ca2a0>, params: {"username"=>"user1", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user1", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 422 Unprocessable Entity in 371ms (Views: 4.0ms | ActiveRecord: 26.3ms | Allocations: 7836)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:29:26 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 176)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:29:42 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (3.08ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 7.2ms | Allocations: 626)
+
+
+  
+NoMethodError (undefined method `model_name' for class ActiveRecord::Relation):
+  
+app/controllers/users_controller.rb:14:in `index'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:30:35 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 4.8ms | Allocations: 619)
+
+
+  
+NoMethodError (undefined method `model_name' for class ActiveRecord::Relation):
+  
+app/controllers/users_controller.rb:14:in `index'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:31:20 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 4.0ms | Allocations: 4780)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:31:41 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user1", "password"=>"[FILTERED]", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351829d00>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351829d00>, params: {"username"=>"user1", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user1", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 202 Accepted in 333ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 1240)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 22:32:14 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 404 Not Found in 5ms (Views: 0.6ms | ActiveRecord: 1.9ms | Allocations: 648)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2024-08-04 22:32:40 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 404 Not Found in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 501)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2024-08-04 22:32:46 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 645)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2024-08-04 22:32:58 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 501)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2024-08-04 22:33:02 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"2", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (2.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Completed 204 No Content in 11ms (ActiveRecord: 6.0ms | Allocations: 1584)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:33:07 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 686)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2024-08-04 22:33:12 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 404 Not Found in 5ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 503)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-08-04 22:33:16 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:33:59 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73518a8e98>, params: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", nil], ["created_at", "2024-08-04 19:33:59.712007"], ["updated_at", "2024-08-04 19:33:59.712007"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 500 Internal Server Error in 382ms (ActiveRecord: 8.7ms | Allocations: 7446)
+
+
+  
+NoMethodError (undefined method `model_name' for class Hash):
+  
+app/controllers/users_controller.rb:25:in `create'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:38:49 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 8.1ms | Allocations: 4780)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:41:24 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d22be0>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d22be0>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 202 Accepted in 265ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1235)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2024-08-04 22:41:40 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"2", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 404 Not Found in 8ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 644)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2024-08-04 22:41:43 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"3", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (2.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Completed 204 No Content in 14ms (ActiveRecord: 6.8ms | Allocations: 1584)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:41:54 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f7351801f58>, params: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", nil], ["created_at", "2024-08-04 19:41:55.008527"], ["updated_at", "2024-08-04 19:41:55.008527"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 2.8ms | Allocations: 3710)
+
+
+  
+NoMethodError (undefined method `model_name' for class Hash):
+  
+app/controllers/users_controller.rb:25:in `create'
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:42:35 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f735185a798>, params: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 422 Unprocessable Entity in 298ms (Views: 0.7ms | ActiveRecord: 18.2ms | Allocations: 7839)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:42:41 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.1ms | Allocations: 1296)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2024-08-04 22:42:48 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"3", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 404 Not Found in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 649)
+
+
+Started DELETE "/users/4" for 127.0.0.1 at 2024-08-04 22:42:53 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"4", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 3.5ms | Allocations: 1569)
+
+
+Started DELETE "/users/4" for 127.0.0.1 at 2024-08-04 22:42:57 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"4", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 404 Not Found in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:43:02 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 687)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:43:10 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameters: :bio, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73533f5840>, params: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (5.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", nil], ["created_at", "2024-08-04 19:43:11.237968"], ["updated_at", "2024-08-04 19:43:11.237968"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.97ms)
+Completed 201 Created in 291ms (Views: 2.6ms | ActiveRecord: 13.9ms | Allocations: 3349)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:43:58 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.77ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 6.1ms | Allocations: 4781)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2024-08-04 22:44:09 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 828)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2024-08-04 22:44:27 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"5", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Completed 204 No Content in 11ms (ActiveRecord: 6.1ms | Allocations: 1585)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-08-04 22:44:36 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f73534e8860>, params: {"username"=>"user", "password"=>"[FILTERED]", "email"=>"example@email.com", "bio"=>"a new user", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"user", "bio"=>"a new user", "email"=>"example@email.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "avatar", "bio", "created_at", "updated_at", "email", "admin") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "user"], ["password_digest", "[FILTERED]"], ["avatar", nil], ["bio", "a new user"], ["created_at", "2024-08-04 19:44:36.826934"], ["updated_at", "2024-08-04 19:44:36.826934"], ["email", "example@email.com"], ["admin", 0]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.55ms)
+Completed 201 Created in 278ms (Views: 2.7ms | ActiveRecord: 2.2ms | Allocations: 3763)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:45:00 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d44880>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f7351d44880>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 202 Accepted in 298ms (Views: 1.5ms | ActiveRecord: 4.7ms | Allocations: 7846)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:45:06 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 248)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:45:17 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73532f0148>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73532f0148>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 202 Accepted in 256ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 855)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2024-08-04 22:45:25 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:45:29 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:45:31 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:45:32 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:46:12 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.1ms | ActiveRecord: 8.7ms | Allocations: 355)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:46:14 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2024-08-04 22:46:18 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2024-08-04 22:46:23 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"5", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-08-04 22:46:30 +0300
+Processing by AuthController#create as */*
+  Parameters: {"username"=>"user", "password"=>"[FILTERED]", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73518ee9c0>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+[31mUnpermitted parameter: :auth. Context: { controller: AuthController, action: create, request: #<ActionDispatch::Request:0x00007f73518ee9c0>, params: {"username"=>"user", "password"=>"[FILTERED]", "controller"=>"auth", "action"=>"create", "auth"=>{"username"=>"user", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 202 Accepted in 309ms (Views: 0.7ms | ActiveRecord: 1.0ms | Allocations: 4749)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2024-08-04 22:46:37 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"6", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2024-08-04 22:46:39 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"6", "user"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2024-08-04 22:47:02 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"6", "user"=>{}}
+Completed 404 Not Found in 1ms (ActiveRecord: 3.8ms | Allocations: 124)
+
+
+  
+AbstractController::ActionNotFound (The destyor action could not be found for the :authorized
+callback on UsersController, but it is listed in the controller's
+:only option.
+
+Raising for missing callback actions is a new default in Rails 7.1, if you'd
+like to turn this off you can delete the option from the environment configurations
+or set `config.action_controller.raise_on_missing_callback_actions` to `false`.
+):
+  
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:62:in `match?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:432:in `block in inverted_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `all?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started DELETE "/users/5" for 127.0.0.1 at 2024-08-04 22:47:08 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"5", "user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 84)
+
+
+  
+AbstractController::ActionNotFound (The destyor action could not be found for the :authorized
+callback on UsersController, but it is listed in the controller's
+:only option.
+
+Raising for missing callback actions is a new default in Rails 7.1, if you'd
+like to turn this off you can delete the option from the environment configurations
+or set `config.action_controller.raise_on_missing_callback_actions` to `false`.
+):
+  
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:62:in `match?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:432:in `block in inverted_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `all?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started DELETE "/users/7" for 127.0.0.1 at 2024-08-04 22:47:13 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 84)
+
+
+  
+AbstractController::ActionNotFound (The destyor action could not be found for the :authorized
+callback on UsersController, but it is listed in the controller's
+:only option.
+
+Raising for missing callback actions is a new default in Rails 7.1, if you'd
+like to turn this off you can delete the option from the environment configurations
+or set `config.action_controller.raise_on_missing_callback_actions` to `false`.
+):
+  
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:62:in `match?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:432:in `block in inverted_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `all?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:47:18 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 84)
+
+
+  
+AbstractController::ActionNotFound (The destyor action could not be found for the :authorized
+callback on UsersController, but it is listed in the controller's
+:only option.
+
+Raising for missing callback actions is a new default in Rails 7.1, if you'd
+like to turn this off you can delete the option from the environment configurations
+or set `config.action_controller.raise_on_missing_callback_actions` to `false`.
+):
+  
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:62:in `match?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:432:in `block in inverted_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `all?'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:109:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:31:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:47:38 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 3.1ms | Allocations: 621)
+
+
+  
+NoMethodError (undefined method `model_name' for class ActiveRecord::Relation):
+  
+app/controllers/users_controller.rb:14:in `index'
+Started GET "/users" for 127.0.0.1 at 2024-08-04 22:48:00 +0300
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 4.1ms | Allocations: 4784)
+
+
+Started DELETE "/users/7" for 127.0.0.1 at 2024-08-04 22:48:05 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 404 Not Found in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 784)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2024-08-04 22:48:11 +0300
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"6", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:60:in `find_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Completed 204 No Content in 9ms (ActiveRecord: 5.8ms | Allocations: 1586)
+
+
