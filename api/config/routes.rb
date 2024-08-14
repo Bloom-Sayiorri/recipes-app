@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users
 
   post '/login', to: 'auth#create'
+  post '/me', to: 'auth#me'
+  get '/logged_in', to: 'application#logged_in?'
+  delete '/logout', to: 'session#logout'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

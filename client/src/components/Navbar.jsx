@@ -1,16 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import Search from './Search';
+// import Search from './Search';
 import { CgProfile } from "react-icons/cg";
 import { FaUserGear } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <header className='bg-sky-200 flex justify-between items-center p-3'>
+    <header className='bg-sky-50 flex justify-between items-center p-3'>
         <div className=''>
             {/* <img src='' alt='Logo'/> */}
             <h1 className=''><NavLink to='/'>Recipes App</NavLink></h1>
         </div>
-        <Search />
+        {/* <Search /> */}
         <nav className='flex gap-2'>
             <div className='flex justify-center items-center gap-3'>
                 <NavLink to='/' className=''>Home</NavLink>
