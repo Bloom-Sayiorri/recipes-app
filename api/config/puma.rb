@@ -17,6 +17,7 @@ if ENV["RAILS_ENV"] == "production"
   worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.physical_processor_count })
   workers worker_count if worker_count > 1
 end
+workers. ENV.fetch("WEB_CONCURRENCY") { 4 }
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
@@ -31,5 +32,6 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
+preload_app!
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
