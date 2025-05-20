@@ -73,7 +73,9 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.permit(:name, :image, :description, :country_of_origin, :serving, :ingredients, :instructions, :date_time)
+    params.require(:recipe).permit(:name, :image, :description, :country_of_origin, :serving, :ingredients, :instructions, :date_time)
+  rescue ActionController::ParameterMissing
+    render json: { message: "Use correct recipes parameters." }, status: :bad_request
   end
 
   def render_not_found
